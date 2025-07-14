@@ -1,31 +1,40 @@
 import classNames from "classnames";
+import { useTasksDispatch } from "../App/TasksContext.jsx";
 import "./Task.css";
 
-function Task({ task, toggleTask, deleteTask }) {
+function Task({ id, text, done }) {
+  const dispatch = useTasksDispatch();
+
   const handleChange = (id) => () => {
-    toggleTask(id);
+    dispatch({
+      type: "toggled",
+      id,
+    });
   };
 
   function handleClick() {
-    if (window.confirm(`Are you sure you want to delete '${task.text}'?`)) {
-      deleteTask(task.id);
+    if (window.confirm(`Are you sure you want to delete '${text}'?`)) {
+      dispatch({
+        type: "deleted",
+        id,
+      });
     }
   }
 
   return (
-    <li className={classNames("Task", { "Task-isDone": task.done })}>
-      <label htmlFor={task.id} className="Task-label">
+    <li className={classNames("Task", { "Task-isDone": done })}>
+      <label htmlFor={id} className="Task-label">
         <input
           type="checkbox"
-          id={task.id}
-          checked={task.done}
+          id={id}
+          checked={done}
           className="Task-input"
-          onChange={handleChange(task.id)}
+          onChange={handleChange(id)}
         />
-        {task.text}
+        {text}
       </label>
       <button type="button" className="Task-button" onClick={handleClick}>
-        Delete <span className="visually-hidden">'{task.text}'</span>
+        Delete <span className="visually-hidden">'{text}'</span>
       </button>
     </li>
   );

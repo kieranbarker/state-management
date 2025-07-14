@@ -1,9 +1,14 @@
+import { useTasksDispatch } from "../App/TasksContext.jsx";
 import "./TaskForm.css";
 
-function TaskForm({ addTask }) {
+function TaskForm() {
+  const dispatch = useTasksDispatch();
+
   function handleSubmit(formData) {
-    const task = formData.get("task");
-    addTask(task);
+    dispatch({
+      type: "added",
+      text: formData.get("task"),
+    });
   }
 
   return (

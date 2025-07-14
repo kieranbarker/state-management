@@ -1,6 +1,9 @@
+import useTaskStore from "../../stores/taskStore.js";
 import "./TaskForm.css";
 
-function TaskForm({ addTask }) {
+function TaskForm() {
+  const addTask = useTaskStore((state) => state.addTask);
+
   function handleSubmit(formData) {
     const task = formData.get("task");
     addTask(task);

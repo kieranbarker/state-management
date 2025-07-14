@@ -1,5 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { createContext, useContext, useReducer } from "react";
-import tasksReducer from "./tasksReducer.js";
+import tasksReducer from "../reducers/tasksReducer.js";
 
 export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);

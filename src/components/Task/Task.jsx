@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useTasksDispatch } from "../App/TasksContext.jsx";
+import { useTasksDispatch } from "../../contexts/TasksContext.jsx";
 import "./Task.css";
 
 function Task({ id, text, done }) {

@@ -1,7 +1,7 @@
+import { useTasks } from "../../contexts/TasksContext.jsx";
 import Task from "../Task/Task.jsx";
 import TaskForm from "../TaskForm/TaskForm.jsx";
 import TaskList from "../TaskList/TaskList.jsx";
-import { useTasks } from "./TasksContext.jsx";
 
 function App() {
   const tasks = useTasks();
